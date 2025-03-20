@@ -1,32 +1,27 @@
 import './App.css'
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import {EmployeeList} from "./components/core/EmployeeList/EmployeeList.jsx";
+
+import {useDispatch, useSelector} from "react-redux";
+import {fetchEmployee} from "./store/employeesSlice.js";
 
 function App() {
-  const [data, setData] = useState([]);
+
+  const dispatch = useDispatch()
+  const {employees, sortedEmployees, status} = useSelector(state => state.employees)
+
+
+  const renderedEmployee = sortedEmployees.length === 0
+        ? employees
+        : sortedEmployees
 
   useEffect(() => {
-    async function fetchData () {
-      try {
-        const response = await fetch('/employees.json')
-
-        if (!response.ok) {
-          throw new Error ('fetch Employee failed')
-        }
-
-        const fetchedData = await response.json()
-        setData(fetchedData)
-      } catch (e) {
-        console.log(e, e.message)
-      }
-    }
-
-    fetchData()
-
-  }, []);
+    dispatch(fetchEmployee());
+  }, [dispatch]);
 
   return (
     <>
-
+      <EmployeeList data={renderedEmployee}/>
     </>
   )
 }

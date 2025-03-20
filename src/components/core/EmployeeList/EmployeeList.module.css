@@ -1,14 +1,48 @@
+.employee__list {
+    padding: 1rem;
+    border: 1px solid wheat;
+    -webkit-border-radius: 1vw;
+    -moz-border-radius: 1vw;
+    border-radius: 1vw;
+
+    select {
+        font-weight: 700;
+        background-color: transparent;
+        border: none;
+        color: wheat;
+        font-size: clamp(14px, 2.5vw, 18px);
+        border-right: 1px solid #fff;
+
+        &:hover,
+        &:active {
+            color: #fff;
+        }
+
+    }
+}
 .employee__item {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr .3fr;
     border-bottom: #535bf2;
-    gap: 1rem
+    gap: 1rem;
+    padding: 5px 12px;
 }
-.employee__name {
-    border-right: 1px solid wheat;
+.employee__itemTop {
+    border: 1px solid wheat;
+    font-weight: 600;
+    font-size: clamp(14px, 2.5vw, 18px);
+    border-radius: 1vw;
+    background-color: #ffffff0f;
 }
-
-.employee__role {}
-
-
-.employee__phone {}
+.employee__field {
+    border-right: 1px solid #fff;
+    /*height:100%;*/
+}
+.employee__checked {
+    text-align: center;
+}
+.employee__check {
+    width: 25px;
+    height:25px;
+    margin: 0 auto;
+}
