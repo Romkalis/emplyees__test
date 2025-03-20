@@ -1,0 +1,14 @@
+.employee__item {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: #535bf2;
+    gap: 1rem
+}
+.employee__name {
+    border-right: 1px solid wheat;
+}
+
+.employee__role {}
+
+
+.employee__phone {}
