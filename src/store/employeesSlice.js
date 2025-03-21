@@ -9,34 +9,59 @@ export const employeesSlice = createSlice({
   initialState: {
     employees: [],
     sortedEmployees: [],
-    status: 'wait', // 'pend', 'load', 'fail', 'ok'
+    status: 'pending', // 'pend', 'ok', 'fail',
     error: null
   },
   reducers: {
-    sortBy: (state, {payload}) => {
-      if (payload === 'all') {
+
+    filterBy: (state, { payload }) => {
+      if (payload === 'inArchive') {
+        state.sortedEmployees = state.employees.filter(el => el.isArchive === true);
+      } else if (payload === 'outArchive') {
+        state.sortedEmployees = state.employees.filter(el => el.isArchive === false);
+      } else if (payload === 'all') {
         state.sortedEmployees = []
       } else {
-        state.sortedEmployees = state.employees.filter( el => el.role === payload)
+        state.sortedEmployees = state.employees.filter(el => el.role === payload);
       }
     },
+
+    sortBy: (state, payload) => {
+
+      if (payload === 'name') {
+        console.log('sort by name')
+      } else if (payload === 'date') {
+        console.log('sort by date')
+      }
+    },
+
     addUser: (state, payload) => state.employees.push(payload),
+
     isArchive: (state, {payload}) => {
       let user = state.employees.find( el => el.id === payload)
       user.isArchive = !user.isArchive
     },
+
+
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchEmployee.pending, (state) => {
+        state.status = 'pending';
       })
       .addCase(fetchEmployee.fulfilled, (state, action) => {
         state.employees = action.payload;
+        state.status = 'ok'
       })
       .addCase(fetchEmployee.rejected, (state, action) => {
+        state.status = 'fail'
       })
   }
 })
 
-export const {sortBy, isArchive, changeUser} = employeesSlice.actions
+export const {
+  filterBy,
+  isArchive,
+  sortBy,
+} = employeesSlice.actions
 export default employeesSlice.reducer

@@ -1,0 +1,72 @@
+.filter__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: clamp(8px, .3vw, 16px) 1rem;
+    border: 1px solid wheat;
+    border-radius: 1vw;
+}
+
+.filter__finder {
+    max-width: 20vw;
+    min-width: 280px;
+
+    input {
+        width: 100%;
+        padding: .4rem;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        color: wheat;
+    }
+}
+
+.filter__sort {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    max-width: max-content;
+
+    p {
+        grid-column: 1/-1;
+    }
+
+}
+
+.filter__radio {
+    grid-column: 1 / -1;
+}
+
+.filter__label {
+    opacity: .8;
+}
+
+.filter__buttonUp,
+.filter__buttonDown {
+
+    background-image: url('../../../adds/img/arrow-down.svg');
+    background-position: center;
+    background-size: contain;
+    background-color: wheat;
+    background-repeat: no-repeat;
+
+    width: 2rem;
+    height: 2rem;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.filter__buttonDown {
+    transform: rotate(180deg);
+
+    &:hover {
+        transform: scale(1.05) rotate(180deg);
+    }
+}

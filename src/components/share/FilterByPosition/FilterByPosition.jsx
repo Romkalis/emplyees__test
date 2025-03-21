@@ -1,13 +1,13 @@
 import {useDispatch} from "react-redux";
-import {sortBy} from "../../../store/employeesSlice.js";
+import {filterBy} from "../../../store/employeesSlice.js";
 
 
-export function SortByPosition () {
+export function FilterByPosition () {
 
   const dispatch = useDispatch()
 
   const handleSelect = (e) => {
-    dispatch(sortBy(e.target.value))
+    dispatch(filterBy(e.target.value))
   }
 
 

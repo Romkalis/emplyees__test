@@ -1,16 +1,25 @@
 import {Employee} from "../Employee/Employee.jsx";
-import {SortByPosition} from "../../share/SortByPosition/SortByPosition.jsx";
+import {FilterByPosition} from "../../share/FilterByPosition/FilterByPosition.jsx";
+import {FilterByStatus} from "../../share/FilterByStatus/FilterByStatus.jsx";
 import s from './EmployeeList.module.css'
 
 export function EmployeeList({data}) {
+
+
+
   return (
     <ul className={s.employee__list}>
+
+      {/*heading*/}
+
       <li className={`${s.employee__item}  ${s.employee__itemTop}`}>
         <p className={s.employee__field}>Имя / Дата:</p>
-        <SortByPosition />
+        <FilterByPosition />
         <p className={s.employee__field}>Номер телефона:</p>
-        <p className={s.employee__checked}>В архиве:</p>
+        <FilterByStatus classStyle={s.employee__field}/>
       </li>
+
+
       {
         data.map(entity => <Employee key={entity.id} entity={entity} styles={s}/>)
       }
