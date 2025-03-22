@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {fetchUsers} from "../utils/fetchUsers.js";
+import {sortingCallback} from "../utils/sortingCallback.js";
 
 export const fetchEmployee = createAsyncThunk('employee/fetchEmployee', fetchUsers)
 
@@ -26,13 +27,8 @@ export const employeesSlice = createSlice({
       }
     },
 
-    sortBy: (state, payload) => {
-
-      if (payload === 'name') {
-        console.log('sort by name')
-      } else if (payload === 'date') {
-        console.log('sort by date')
-      }
+    sortBy: (state, {payload}) => {
+      state.employees = state.employees.sort(sortingCallback(payload))
     },
 
     addUser: (state, payload) => state.employees.push(payload),

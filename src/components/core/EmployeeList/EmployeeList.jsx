@@ -1,6 +1,5 @@
 import {Employee} from "../Employee/Employee.jsx";
 import {FilterByPosition} from "../../share/FilterByPosition/FilterByPosition.jsx";
-import {FilterByStatus} from "../../share/FilterByStatus/FilterByStatus.jsx";
 import s from './EmployeeList.module.css'
 
 export function EmployeeList({data}) {
@@ -16,7 +15,9 @@ export function EmployeeList({data}) {
         <p className={s.employee__field}>Имя / Дата:</p>
         <FilterByPosition />
         <p className={s.employee__field}>Номер телефона:</p>
-        <FilterByStatus classStyle={s.employee__field}/>
+        <p className={s.employee__field}>
+          Архив
+        </p>
       </li>
 
 

@@ -1,42 +1,59 @@
+import {useDispatch} from "react-redux";
+import {filterBy, sortBy} from '../../../store/employeesSlice.js'
 import s from './FilterBlock.module.css'
 
 export function FilterBlock() {
 
+  const dispatch = useDispatch()
 
-  const handleFilterChange = () => {
-    console.log('ch')
+
+
+
+  const handleSortChange = (e) => {
+    if ( e.target.classList.value.includes('button') ) {
+      const btnDataset = e.target.dataset.name
+
+      dispatch( sortBy( btnDataset ) )
+    }
   }
+
+  const handleFilterChange = (e) => {
+    dispatch( filterBy(e.target.value) )
+  }
+
+  // const
 
   return (
     <>
-      <section className={s.filter__wrapper}>
+      <section onClick={handleSortChange} className={s.filter__wrapper}>
 
 
         <div className={s.filter__sort}>
           <p>По имени:</p>
-          <button className={s.filter__buttonUp}></button>
-          <button className={s.filter__buttonDown}></button>
+          <button data-name={'name-up'} className={s.filter__buttonUp}></button>
+          <button data-name={'name-down'} className={s.filter__buttonDown}></button>
         </div>
 
         <div className={s.filter__sort}>
           <p>По дате рождения:</p>
-          <button className={s.filter__buttonUp}></button>
-          <button className={s.filter__buttonDown}></button>
+          <button data-name={'age-up'} className={s.filter__buttonUp}></button>
+          <button data-name={'age-down'} className={s.filter__buttonDown}></button>
         </div>
 
         <div className={s.filter__sort}>
           <p>По телефону:</p>
-          <button className={s.filter__buttonUp}></button>
-          <button className={s.filter__buttonDown}></button>
+          <button data-name={'phone-up'} className={s.filter__buttonUp}></button>
+          <button data-name={'phone-down'} className={s.filter__buttonDown}></button>
         </div>
 
         <div className={s.filter__sort}>
-          <div className={s.filter__radio}>
+          <form onChange={handleFilterChange} className={s.filter__radio}>
             <label className={s.filter__label}>
-              <input type="radio" name="employeeFilter"
-                     value="all"
-                     onChange={handleFilterChange}
-                     defaultChecked
+              <input
+                type="radio"
+                name="employeeFilter"
+                value="all"
+                defaultChecked
               />
               Все
             </label>
@@ -46,7 +63,6 @@ export function FilterBlock() {
                 type="radio"
                 name="employeeFilter"
                 value="outArchive"
-                onChange={handleFilterChange}
               />
               Работает
             </label>
@@ -56,16 +72,13 @@ export function FilterBlock() {
                 type="radio"
                 name="employeeFilter"
                 value="inArchive"
-                onChange={handleFilterChange}
               />
               Архив
             </label>
-          </div>
+          </form>
         </div>
 
-
         <div className={s.filter__finder}>
-          <p>Поиск:</p>
           <input type="text" placeholder="Поиск..."/>
         </div>
 
