@@ -23,8 +23,6 @@ export const employeesSlice = createSlice({
         state.sortedEmployees = state.employees.filter(el => el.isArchive === false);
       } else if (payload === 'all') {
         state.sortedEmployees = []
-      } else {
-        state.sortedEmployees = state.employees.filter(el => el.role === payload);
       }
     },
 
