@@ -8,12 +8,20 @@
 }
 
 .logo {
+    box-sizing: border-box;
     width: 50px;
     background-color: wheat;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     padding: 5px;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        padding: 9px;
+        background-color: #fff;
+        transform: scale(1.05) rotate(360deg);
+    }
 }
 
 
