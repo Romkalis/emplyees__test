@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {fetchUsers} from "../utils/fetchUsers.js";
 import {sortingCallback} from "../utils/sortingCallback.js";
+import {convertPhone} from "../utils/convertPhone.js";
 
 export const fetchEmployee = createAsyncThunk('employee/fetchEmployee', fetchUsers)
 
@@ -10,6 +11,7 @@ export const employeesSlice = createSlice({
   initialState: {
     employees: [],
     sortedEmployees: [],
+    showedEmployee: [],
     status: 'pending', // 'pend', 'ok', 'fail',
     error: null
   },
@@ -28,7 +30,13 @@ export const employeesSlice = createSlice({
     },
 
     sortBy: (state, {payload}) => {
-      state.employees = state.employees.sort(sortingCallback(payload))
+
+      if (state.sortedEmployees.length === 0) {
+        state.showedEmployee = state.employees.sort(sortingCallback(payload))
+      } else {
+        state.showedEmployee = state.sortedEmployees.sort(sortingCallback(payload))
+      }
+
     },
 
     addUser: (state, payload) => state.employees.push(payload),
@@ -37,6 +45,15 @@ export const employeesSlice = createSlice({
       let user = state.employees.find( el => el.id === payload)
       user.isArchive = !user.isArchive
     },
+
+    findBy: (state, {payload}) => {
+      state.showedEmployee = state.employees.filter( el =>
+       Object.values(el).some(
+         value => {
+           return value.toString().replace(/[()\-\s]/g, '').toLowerCase().includes(payload.toLowerCase()
+       )}
+      )
+      )}
 
 
   },
@@ -47,6 +64,7 @@ export const employeesSlice = createSlice({
       })
       .addCase(fetchEmployee.fulfilled, (state, action) => {
         state.employees = action.payload;
+        state.showedEmployee = action.payload;
         state.status = 'ok'
       })
       .addCase(fetchEmployee.rejected, (state, action) => {
@@ -59,5 +77,7 @@ export const {
   filterBy,
   isArchive,
   sortBy,
+  findBy,
+  addUser,
 } = employeesSlice.actions
 export default employeesSlice.reducer

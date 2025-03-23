@@ -1,13 +1,14 @@
 import {useDispatch} from "react-redux";
-import {filterBy, sortBy} from '../../../store/employeesSlice.js'
+import {filterBy, sortBy, findBy} from '../../../store/employeesSlice.js'
 import s from './FilterBlock.module.css'
 
 export function FilterBlock() {
 
   const dispatch = useDispatch()
 
-
-
+  const handleFindInput = (e) => {
+    dispatch(findBy(e.target.value))
+  }
 
   const handleSortChange = (e) => {
     if ( e.target.classList.value.includes('button') ) {
@@ -16,12 +17,9 @@ export function FilterBlock() {
       dispatch( sortBy( btnDataset ) )
     }
   }
-
   const handleFilterChange = (e) => {
     dispatch( filterBy(e.target.value) )
   }
-
-  // const
 
   return (
     <>
@@ -79,7 +77,7 @@ export function FilterBlock() {
         </div>
 
         <div className={s.filter__finder}>
-          <input type="text" placeholder="Поиск..."/>
+          <input onChange={handleFindInput} type="text" placeholder="Поиск..."/>
         </div>
 
       </section>

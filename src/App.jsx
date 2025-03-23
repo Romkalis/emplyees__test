@@ -10,7 +10,7 @@ import {FilterBlock} from "./components/core/FilterBlock/FilterBlock.jsx";
 function App() {
 
   const dispatch = useDispatch()
-  const {employees, sortedEmployees, status} = useSelector(state => state.employees)
+  const {showedEmployee, sortedEmployees, status} = useSelector(state => state.employees)
 
   useEffect(() => {
     dispatch(fetchEmployee());
@@ -19,7 +19,7 @@ function App() {
 
   const renderedEmployee =
     sortedEmployees.length === 0
-      ? employees
+      ? showedEmployee
       : sortedEmployees;
 
 
