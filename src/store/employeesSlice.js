@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {fetchUsers} from "../utils/fetchUsers.js";
 import {sortingCallback} from "../utils/sortingCallback.js";
-import {convertPhone} from "../utils/convertPhone.js";
 
 export const fetchEmployee = createAsyncThunk('employee/fetchEmployee', fetchUsers)
 
@@ -12,7 +11,7 @@ export const employeesSlice = createSlice({
     employees: [],
     sortedEmployees: [],
     showedEmployee: [],
-    status: 'pending', // 'pend', 'ok', 'fail',
+    status: 'pending', // 'pending', 'ok', 'fail',
     error: null
   },
   reducers: {
@@ -39,7 +38,10 @@ export const employeesSlice = createSlice({
 
     },
 
-    addUser: (state, payload) => state.employees.push(payload),
+    addUser: (state, payload) => {
+      state.employees = [...state.employees, payload]
+      state.showedEmployee = state.employees
+    },
 
     isArchive: (state, {payload}) => {
       let user = state.employees.find( el => el.id === payload)
@@ -67,7 +69,7 @@ export const employeesSlice = createSlice({
         state.showedEmployee = action.payload;
         state.status = 'ok'
       })
-      .addCase(fetchEmployee.rejected, (state, action) => {
+      .addCase(fetchEmployee.rejected, (state) => {
         state.status = 'fail'
       })
   }

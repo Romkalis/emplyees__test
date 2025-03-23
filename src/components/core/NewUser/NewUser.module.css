@@ -42,6 +42,11 @@
     width: 100%;
     max-width: 300px;
     place-self: center;
+    &:disabled {
+        color: grey;
+        background-color: lightgray;
+        cursor: not-allowed;
+    }
 }
 
 .newUser__telWrapper {
@@ -53,14 +58,14 @@
     display: inline-block;
     padding-left: 2.5em;
 }
-.newUser__telWrapper::before {
+.newUser__telWrapper::after {
     content: '+7';
     position: absolute;
     width: 1em;
     height: 2em;
 
     transform: translate(50%, -50%);
-    top: 50%;
+    top: calc(50% - 1px);
     left: 0;
 
     font-size: 13px;
@@ -68,6 +73,21 @@
 
     display: grid;
     align-items: center;
+}
+
+.newUser__error {
+        display: none;
+}
+
+.error {
+    input {
+        border: 1px solid tomato;
+        position: relative;
+    }
+    .newUser__labelTitle {
+        color: tomato;
+    }
+
 }
 
 
