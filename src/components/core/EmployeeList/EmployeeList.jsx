@@ -4,6 +4,7 @@ import s from './EmployeeList.module.css'
 
 export function EmployeeList({data}) {
 
+
   return (
     <ul className={s.employee__list}>
 

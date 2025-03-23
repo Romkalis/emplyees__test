@@ -1,12 +1,84 @@
-# React + Vite
+# 👨‍💼 Employee Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для управления сотрудниками: фильтрация, редактирование, добавление новых сотрудников. Реализовано на **React + Redux Toolkit**. Собирается с помощью **Vite**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Функциональность
 
-## Expanding the ESLint configuration
+- 📋 Список сотрудников с отображением:
+    - Имени
+    - Должности
+    - Телефона
+- 🔍 Фильтрация:
+    - По должности (`Повар`, `Официант`, `Водитель`)
+    - По статусу "в архиве"
+- 🔃 Сортировка:
+    - По имени
+    - По дате рождения
+    - по телефону
+- 📋 Дополнительно реализован поиск по текстовому полю
+- ✏️ Редактирование данных сотрудника
+- ➕ Добавление нового сотрудника
+- 🧭 Навигация через `react-router-dom`
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Установка и запуск
+
+```bash
+# Установить зависимости
+npm install
+
+# Запустить frontend
+npm run dev
+
+# Сборка проекта
+npm run build
+
+```
+
+## Cтруктура проекта
+```mermaid
+project
+├── public/
+│   └── employees.json
+├── src/
+│   ├── assets/
+│   │   └── img/
+│   ├── components/
+│   │   ├── core/
+│   │   │   ├── Employee/
+│   │   │   ├── EmployeeEdit/
+│   │   │   ├── EmployeeList/
+│   │   │   ├── FilterBlock/
+│   │   │   ├── Header/
+│   │   │   ├── Home/
+│   │   │   └── NewUser/
+│   │   └── share/
+│   │       ├── FilterByPosition/
+│   │       └── Spinner/
+│   ├── routes/
+│   │   └── routes.jsx
+│   ├── store/
+│   │   ├── employeesSlice.js
+│   │   └── store.jsx
+│   └── utils/
+├── App.jsx
+├── main.jsx
+```
+
+## Использованные библиотеки
+
+## 📦 Использованные библиотеки
+
+| Библиотека              | Назначение                                      |
+|------------------------|--------------------------------------------------|
+| **react**              | Основной фреймворк для создания интерфейса       |
+| **react-dom**          | Работа с DOM-деревом в React                     |
+| **react-redux**        | Связка React с Redux — управление состоянием    |
+| **@reduxjs/toolkit**   | Упрощённая и современная работа с Redux         |
+| **react-router-dom**   | Навигация и роутинг в SPA-приложении            |
+
+
+

@@ -13,15 +13,15 @@ export function Home() {
   const {showedEmployee, sortedEmployees, status} = useSelector(state => state.employees)
 
   useEffect(() => {
-    dispatch(fetchEmployee());
-  }, [dispatch]);
-
+    if (status === "pending") {
+      dispatch(fetchEmployee());
+    }
+  }, [dispatch, status]);
 
   const renderedEmployee =
     sortedEmployees.length === 0
       ? showedEmployee
       : sortedEmployees;
-
 
   return (
     <>
@@ -31,7 +31,7 @@ export function Home() {
       <FilterBlock />
       <EmployeeList data={renderedEmployee}/>
 
-      {status === 'fail' && <p> Houston, we have some problems, try again later! </p>}
+      {status === 'fail' && <p> Список пустой, возможно, стоит попить чайку и попробовать позже =) </p>}
 
     </>
   )

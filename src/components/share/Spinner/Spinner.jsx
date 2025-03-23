@@ -1,4 +1,4 @@
-import spinner from '../../../adds/img/spinner.svg';
+import spinner from '../../../assets/img/spinner.svg';
 import s from './Spinner.module.css'
 
 export function Spinner () {

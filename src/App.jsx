@@ -8,7 +8,7 @@ function App() {
     <>
       <Header />
       <main>
-        <Outlet></Outlet>
+        <Outlet />
       </main>
     </>
   )

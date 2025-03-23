@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
-import add from '../../../adds/img/add.svg'
-import home from '../../../adds/img/home.svg'
-import logo from '../../../adds/img/logo.svg'
+import add from '../../../assets/img/add.svg'
+import home from '../../../assets/img/home.svg'
+import logo from '../../../assets/img/logo.svg'
 
 import s from "./Header.module.css"
 

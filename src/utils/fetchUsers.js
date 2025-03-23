@@ -1,7 +1,7 @@
 export async function fetchUsers() {
   try {
     // проверка спиннера
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
 
     const response = await fetch('/employees.json')
@@ -9,10 +9,7 @@ export async function fetchUsers() {
     if (!response.ok) {
       throw new Error('Users fetch failed')
     }
-    const data = await response.json()
-
-    return data
-
+    return await response.json()
   } catch (e) {
     console.log(e, e.message)
   }

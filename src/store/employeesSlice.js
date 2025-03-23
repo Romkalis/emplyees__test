@@ -23,6 +23,8 @@ export const employeesSlice = createSlice({
         state.sortedEmployees = state.employees.filter(el => el.isArchive === false);
       } else if (payload === 'all') {
         state.sortedEmployees = []
+      } else {
+        state.sortedEmployees = state.employees.filter( el => el.role === payload)
       }
     },
 
@@ -36,10 +38,21 @@ export const employeesSlice = createSlice({
 
     },
 
-    addUser: (state, payload) => {
+    addUser: (state, {payload}) => {
+
       state.employees = [...state.employees, payload]
+      state.showedEmployee = [...state.employees]
+
+    },
+
+    changeUser: (state, { payload }) => {
+      const index = state.employees.findIndex(user => user.id === payload.id);
+      if (index !== -1) {
+        state.employees[index] = payload;
+      }
       state.showedEmployee = state.employees
     },
+
 
     isArchive: (state, {payload}) => {
       let user = state.employees.find( el => el.id === payload)
@@ -79,5 +92,6 @@ export const {
   sortBy,
   findBy,
   addUser,
+  changeUser,
 } = employeesSlice.actions
 export default employeesSlice.reducer

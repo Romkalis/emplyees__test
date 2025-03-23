@@ -1,0 +1,83 @@
+.edit__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000cc;
+    display: grid;
+    place-items: center;
+}
+
+.edit__form {
+    box-sizing: border-box;
+    width: clamp(220px, 80vw, 600px);
+    max-width: 80vw;
+    border: 1px solid wheat;
+    padding: clamp(16px, 5vw, 32px);
+    background-color: #000;
+    -webkit-border-radius: 2vw;
+    -moz-border-radius: 2vw;
+    border-radius: 2vw;
+
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 12px;
+        border-radius: 12px;
+    }
+
+    label {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    input,
+    select {
+        box-sizing: border-box;
+        padding: 8px;
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        background-color: #3d3d3d;
+    }
+
+    button {
+        grid-column: 1 / -1;
+        margin-top: 20px;
+        max-width: 320px;
+        width: 100%;
+        place-self: center;
+
+    }
+
+    label:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            text-wrap: nowrap;
+        }
+    }
+
+    button:disabled {
+        background-color: dimgrey;
+        color: #3d3d3d;
+        cursor: not-allowed;
+    }
+}
+
+.error {
+    color: tomato;
+}
+
+@media(max-width: 600px) {
+    .edit__form {
+        fieldset {
+            grid-template-columns: 1fr;
+        }
+    }
+}
