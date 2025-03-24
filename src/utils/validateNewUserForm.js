@@ -66,6 +66,7 @@ export function validateNewUserForm(e, s) {
       return ''
 
     }
+    default: return ''
   }
 
 }

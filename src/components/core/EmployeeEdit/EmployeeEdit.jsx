@@ -1,12 +1,15 @@
-import s from "./EmployeeEdit.module.css";
 import {validateNewUserForm} from "../../../utils/validateNewUserForm.js";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
+import {changeUser} from "../../../store/employeesSlice.js";
+
 import {convertPhone} from "../../../utils/convertPhone.js";
 import {dateToIso} from "../../../utils/dateToIso.js";
 import {addFormattedPhone} from "../../../utils/addFormattedPhone.js";
 import {addFormattedBirthday} from "../../../utils/addFormattedBirthday.js";
-import {changeUser} from "../../../store/employeesSlice.js";
+
+import s from "./EmployeeEdit.module.css";
+
 
 
 export function EmployeeEdit({id, onClose}) {
@@ -21,10 +24,9 @@ export function EmployeeEdit({id, onClose}) {
     name: '',
     phone: '',
     role: '',
-    birthday: ''
+    birthday: '',
+
   })
-
-
 
   const dispatch = useDispatch()
 
@@ -32,8 +34,6 @@ export function EmployeeEdit({id, onClose}) {
     const {name, value} = e.target
     setIsError(prev => ({...prev, [name]: validateNewUserForm(e, s)}))
     setUser(prev => ({...prev, [name]: value}))
-
-    console.log(isError)
   }
 
   const handleSubmit = (e) => {
@@ -57,12 +57,10 @@ export function EmployeeEdit({id, onClose}) {
   }
 
   return (
-    <div onClick={handleClose}
-         className={s.edit__wrapper}>
 
-    <form onSubmit={handleSubmit}
+    <div onClick={handleClose} className={s.edit__wrapper}>
 
-          className={s.edit__form}
+    <form onSubmit={handleSubmit} className={s.edit__form}
     >
       <fieldset>
         <legend>Редактировать данные: {user.name}</legend>

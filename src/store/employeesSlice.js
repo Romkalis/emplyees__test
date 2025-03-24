@@ -19,7 +19,6 @@ export const employeesSlice = createSlice({
     }
   },
   reducers: {
-
     filterBy: (state, {payload}) => {
 
       switch(payload) {
@@ -41,9 +40,6 @@ export const employeesSlice = createSlice({
 
       state.sortedEmployees = state.employees.filter((el) => {
 
-        // console.log(state.filter.role)
-        // console.log(state.filter.isArchive)
-
         const matchRole = state.filter.role === 'all' || el.role === state.filter.role;
         const matchArchive =
           state.filter.isArchive === 'all' ||
@@ -61,7 +57,6 @@ export const employeesSlice = createSlice({
       } else {
         state.showedEmployee = state.sortedEmployees.sort(sortingCallback(payload))
       }
-
     },
 
     addUser: (state, {payload}) => {
@@ -79,7 +74,6 @@ export const employeesSlice = createSlice({
       state.showedEmployee = state.employees
     },
 
-
     isArchive: (state, {payload}) => {
       let user = state.employees.find(el => el.id === payload)
       user.isArchive = !user.isArchive
@@ -95,8 +89,6 @@ export const employeesSlice = createSlice({
         )
       )
     }
-
-
   },
   extraReducers: (builder) => {
     builder
