@@ -1,16 +1,24 @@
+#root {
+  --c-main: wheat;
+  --bg-input: #707070;
+  --bg-main: #262626;
+  --c-text: wheat;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: wheat;
+  color: var(--c-main);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 p {
@@ -26,17 +34,13 @@ a:hover {
   color: #535bf2;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(16px, 4vw, 2rem);
-}
-
-
 body {
+  box-sizing: border-box;
   margin: 0;
-  min-width: 320px;
   min-height: 100vh;
+  color: wheat;
+  padding: clamp(16px, 4vw, 2rem);
+
 }
 
 h1 {
@@ -63,15 +67,42 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+
 @media (prefers-color-scheme: light) {
+  #root {
+    --c-main: #d7dcfc;
+    --c-text:  #213547;
+    --bg-input: #efefef;
+    --bg-main: #fcebe3;
+  }
+
+  body {
+    color: var(--c-text);
+  }
+
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--c-text);
+    background-color: var(--bg-main);
   }
   a:hover {
+    transition: all .3s ease;
     color: #747bff;
+    opacity: 0.8;
+    transform: scale(1.05);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #e0a14e;
+    transition: all .3s ease;
+
+    &:hover {
+      opacity: .8;
+    }
   }
+
+  input,
+  select {
+    background-color: var(--bg-input);
+  }
+
 }

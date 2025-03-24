@@ -13,7 +13,7 @@
     box-sizing: border-box;
     width: clamp(220px, 80vw, 600px);
     max-width: 80vw;
-    border: 1px solid wheat;
+    border: 1px solid var(--c-main);
     padding: clamp(16px, 5vw, 32px);
     background-color: #000;
     -webkit-border-radius: 2vw;

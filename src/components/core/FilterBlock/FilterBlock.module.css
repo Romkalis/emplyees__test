@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
 
-    border: 1px solid wheat;
+    border: 1px solid var(--c-main);
     border-radius: 1vw;
     padding: clamp(8px, .3vw, 16px) 1rem;
 }
@@ -40,7 +40,6 @@
         box-sizing: border-box;
         border: none;
         border-radius: 4px;
-        color: wheat;
         font-size: inherit;
     }
 }
@@ -75,7 +74,7 @@
     background-image: url('../../../assets/img/arrow-down.svg');
     background-position: center;
     background-size: contain;
-    background-color: wheat;
+    background-color: var(--c-main);
     background-repeat: no-repeat;
 
     padding: 0;

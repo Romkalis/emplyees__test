@@ -1,22 +1,23 @@
 .employee__list {
     padding: 1rem;
-    border: 1px solid wheat;
+    border: 1px solid var(--c-main);
     -webkit-border-radius: 1vw;
     -moz-border-radius: 1vw;
     border-radius: 1vw;
     font-size: clamp(12px, 2vw, 18px);
 
     select {
+        box-sizing: border-box;
         font-weight: 700;
-        background-color: transparent;
         border: none;
-        color: wheat;
         font-size: clamp(12px, 2vw, 18px);
         border-right: 1px solid #ffffff0f;
+        background-color: var(--c-main);
+        border-radius: 4px;
 
         &:hover,
         &:active {
-            color: #fff;
+            opacity: 0.8;
         }
     }
 }
@@ -25,13 +26,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr .3fr;
     border-bottom: 1px solid #ffffff0f;
-    gap: 1rem;
+    gap: 8px;
     padding: 5px 12px;
     cursor: pointer;
 }
 
 .employee__itemTop {
-    border: 1px solid wheat;
+    border: 1px solid var(--c-main);
     font-weight: 600;
     border-radius: 1vw;
     background-color: #ffffff0f;
@@ -53,13 +54,17 @@
 
 @media (max-width: 600px) {
     .employee__item {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 2fr 1fr;
     }
 
     .employee__list {
+        select {
+            color: var(--bg-main);
+        }
         select,
         .employee__field {
             border-right: none;
+
         }
     }
 }

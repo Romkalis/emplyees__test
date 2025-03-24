@@ -10,7 +10,7 @@
 .logo {
     box-sizing: border-box;
     width: 50px;
-    background-color: wheat;
+    background-color: var(--c-main);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -34,7 +34,7 @@
 
 .button {
     width: 40px;
-    background-color: wheat;
+    background-color: var(--c-main);
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
