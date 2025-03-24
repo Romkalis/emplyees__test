@@ -12,20 +12,46 @@ export const employeesSlice = createSlice({
     sortedEmployees: [],
     showedEmployee: [],
     status: 'pending', // 'pending', 'ok', 'fail',
-    error: null
+    error: null,
+    filter: {
+      role: 'all',
+      isArchive: 'all',
+    }
   },
   reducers: {
 
-    filterBy: (state, { payload }) => {
-      if (payload === 'inArchive') {
-        state.sortedEmployees = state.employees.filter(el => el.isArchive === true);
-      } else if (payload === 'outArchive') {
-        state.sortedEmployees = state.employees.filter(el => el.isArchive === false);
-      } else if (payload === 'all') {
-        state.sortedEmployees = []
-      } else {
-        state.sortedEmployees = state.employees.filter( el => el.role === payload)
+    filterBy: (state, {payload}) => {
+
+      switch(payload) {
+        case 'allEmployee': {
+          state.filter = {...state.filter, isArchive: 'all'}
+          break
+        }
+        case 'inArchive': {
+          state.filter = {...state.filter, isArchive: true}
+          break
+        }
+        case 'outArchive': {
+          state.filter = {...state.filter, isArchive: false}
+          break
+        }
+        default:
+          state.filter = {...state.filter, role: payload}
       }
+
+      state.sortedEmployees = state.employees.filter((el) => {
+
+        // console.log(state.filter.role)
+        // console.log(state.filter.isArchive)
+
+        const matchRole = state.filter.role === 'all' || el.role === state.filter.role;
+        const matchArchive =
+          state.filter.isArchive === 'all' ||
+          el.isArchive === state.filter.isArchive;
+
+        return matchRole && matchArchive;
+      });
+
     },
 
     sortBy: (state, {payload}) => {
@@ -45,7 +71,7 @@ export const employeesSlice = createSlice({
 
     },
 
-    changeUser: (state, { payload }) => {
+    changeUser: (state, {payload}) => {
       const index = state.employees.findIndex(user => user.id === payload.id);
       if (index !== -1) {
         state.employees[index] = payload;
@@ -55,18 +81,20 @@ export const employeesSlice = createSlice({
 
 
     isArchive: (state, {payload}) => {
-      let user = state.employees.find( el => el.id === payload)
+      let user = state.employees.find(el => el.id === payload)
       user.isArchive = !user.isArchive
     },
 
     findBy: (state, {payload}) => {
-      state.showedEmployee = state.employees.filter( el =>
-       Object.values(el).some(
-         value => {
-           return value.toString().replace(/[()\-\s]/g, '').toLowerCase().includes(payload.toLowerCase()
-       )}
+      state.showedEmployee = state.employees.filter(el =>
+        Object.values(el).some(
+          value => {
+            return value.toString().replace(/[()\-\s]/g, '').toLowerCase().includes(payload.toLowerCase()
+            )
+          }
+        )
       )
-      )}
+    }
 
 
   },

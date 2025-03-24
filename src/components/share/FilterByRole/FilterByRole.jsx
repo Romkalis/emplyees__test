@@ -2,7 +2,7 @@ import {useDispatch} from "react-redux";
 import {filterBy} from "../../../store/employeesSlice.js";
 
 
-export function FilterByPosition () {
+export function FilterByRole () {
 
   const dispatch = useDispatch()
 

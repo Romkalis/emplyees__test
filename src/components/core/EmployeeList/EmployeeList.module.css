@@ -8,12 +8,14 @@
 
     select {
         box-sizing: border-box;
-        font-weight: 700;
         border: none;
         font-size: clamp(12px, 2vw, 18px);
         border-right: 1px solid #ffffff0f;
         background-color: var(--c-main);
         border-radius: 4px;
+
+        color: #213547;
+
 
         &:hover,
         &:active {
@@ -58,9 +60,7 @@
     }
 
     .employee__list {
-        select {
-            color: var(--bg-main);
-        }
+
         select,
         .employee__field {
             border-right: none;

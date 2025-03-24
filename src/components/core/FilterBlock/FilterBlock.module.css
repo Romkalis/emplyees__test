@@ -10,6 +10,12 @@
     border: 1px solid var(--c-main);
     border-radius: 1vw;
     padding: clamp(8px, .3vw, 16px) 1rem;
+
+    h2 {
+        grid-column: 1 /-1;
+        margin: 0;
+        font-size: clamp(16px, 2vw, 24px);
+    }
 }
 
 .fieldset__sort,

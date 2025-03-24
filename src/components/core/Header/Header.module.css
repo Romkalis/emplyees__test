@@ -2,9 +2,9 @@
     width: 100%;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #fff;
-    margin-bottom: 1vw;
-    padding-bottom: 1vw;
+    border-bottom: 1px solid var(--c-main);
+    margin-bottom: 4vw;
+    padding-bottom: 2vw;
 }
 
 .logo {

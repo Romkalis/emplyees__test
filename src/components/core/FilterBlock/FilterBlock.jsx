@@ -24,7 +24,7 @@ export function FilterBlock() {
   return (
     <>
       <section onClick={handleSortChange} className={s.filter__wrapper}>
-
+        <h2>Форма сортировки сотрудников</h2>
         <fieldset className={s.fieldset__sort}>
           <legend>Сортировка</legend>
           <div className={s.filter__sort}>
@@ -55,7 +55,7 @@ export function FilterBlock() {
                 <input
                   type="radio"
                   name="employeeFilter"
-                  value="all"
+                  value="allEmployee"
                   defaultChecked
                 />
                 Все
